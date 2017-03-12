@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装函数的方式</title>
+	<script>
+		//封装进一个对象
+		//已经有了模块的感觉
+		//仍然存在污染全局的问题
+		var calculator = {
+			//cal.js
+			//计算模块
+			add: function (a,b) {
+					return parseFloat(a) + parseFloat(b);
+			},
+
+			subtract: function (a,b) {
+				return parseFloat(a) - parseFloat(b);
+			},
+
+			multply: function(a,b) {
+				return parseFloat(a) * parseFloat(b);
+			},
+
+			divid : function(a,b) {
+				return parseFloat(a) / parseFloat(b);
+			}
+		};
+
+		//继续改进
+		//首先定义大的模块
+		//然后再分小的模块
+
+	  //模块内部相关性大，模块间聚合度低
+	  //高内聚，低耦合
+	  //问题：没有私有空间
+		var math = {};
+		math.calculator = {};
+		math.calculator.add = function(a,b) {
+			return a + b;
+		}
+		math.convert = {};
+
+		// ======================
+		window.onload = function(){
+			var ta = document.getElementById('txt_a');
+			var tb = document.getElementById('txt_b');
+			var tres = document.getElementById('txt_res');
+			var btn = document.getElementById('btn');
+			var op = document.getElementById('sel_op');
+
+			btn.onclick = function(){
+				switch(op.value){
+					case '+':
+					tres.value = calculator.add(ta.value,tb.value);
+					break;
+
+					case '-':
+					tres.value = calculator.subtract(ta.value,tb.value);
+					break;
+
+					case '×':
+					tres.value = calculator.multiply(ta.value,tb.value);
+					break;
+
+					case '÷':
+					tres.value = calculator.divid(ta.value,tb.value);
+					break;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="txt_a" name="" >
+	<select id="sel_op">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="×">×</option>
+		<option value="÷">÷</option>
+	</select>
+	<input type="text" id="txt_b" name="">
+	<input type="button" id="btn" value="=">
+	<input type="text" id="txt_res">
+  <!-- 需要实现计算的功能 -->
+</body>
+</html>

@@ -7,16 +7,16 @@
 		//cal.js
 		//计算模块
 		function add(a,b) {
-			return a + b;
+			return parseFloat(a) + parseFloat(b);
 		}
 		function subtract(a,b) {
-			return a - b;
+			return parseFloat(a) - parseFloat(b);
 		}
 		function multiply(a,b) {
-			return a * b;
+			return parseFloat(a) * parseFloat(b);
 		}
 		function divid(a,b) {
-			return a / b;
+			return parseFloat(a) / parseFloat(b);
 		}
 		// ======================
 		window.onload = function(){
@@ -29,7 +29,7 @@
 			btn.onclick = function(){
 				switch(op.value){
 					case '+':
-					tres.value = add(parseInt(ta.value),parseInt(tb.value));
+					tres.value = add(ta.value,tb.value);
 					break;
 
 					case '-':
