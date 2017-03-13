@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="node_modules/seajs/dist/sea.js"></script>
+	<script>
+		seajs.config({
+			alias: {
+				// 变化点封装
+				calc:'./module/calc.js'
+			}
+		});
+		seajs.use('calc');
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
